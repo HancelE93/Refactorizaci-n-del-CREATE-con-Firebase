@@ -1,5 +1,12 @@
 
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
+
 import { db } from "../firebase";
 
 export interface Producto {
@@ -9,17 +16,15 @@ export interface Producto {
   stock: number;
 }
 
-export interface NuevoProducto {
-  nombre: string;
-  precio: number;
-  stock: number;
-}
-
-export const crearProducto = async (producto: NuevoProducto) => {
+export const crearProducto = async (
+  nombre: string,
+  precio: number,
+  stock: number
+) => {
   const docRef = await addDoc(collection(db, "productos"), {
-    nombre: producto.nombre,
-    precio: producto.precio,
-    stock: producto.stock,
+    nombre,
+    precio,
+    stock,
   });
 
   return docRef.id;
@@ -34,4 +39,19 @@ export const obtenerProductos = async (): Promise<Producto[]> => {
   })) as Producto[];
 
   return productos;
+};
+
+export const actualizarProducto = async (
+  id: string,
+  nombre: string,
+  precio: number,
+  stock: number
+) => {
+  const productRef = doc(db, "productos", id);
+
+  await updateDoc(productRef, {
+    nombre,
+    precio,
+    stock,
+  });
 };

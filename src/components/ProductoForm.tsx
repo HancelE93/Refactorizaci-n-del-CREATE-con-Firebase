@@ -1,73 +1,92 @@
-import { useState, type FormEvent } from "react";
-import { crearProducto } from "../services/productoService";
+import { useState, type SyntheticEvent } from "react";
+import { actualizarProducto, crearProducto, type Producto } from "../services/productoService";
 
-function ProductoForm() {
-  const [nombre, setNombre] = useState("");
-  const [precio, setPrecio] = useState("");
-  const [stock, setStock] = useState("");
 
-  const guardarProducto = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+interface Props {
+    productoEditar: Producto | null;
+}
+function ProductoForm({ productoEditar }: Props) {
+    const [nombre, setNombre] = useState(productoEditar?.nombre ?? "");
+    const [precio, setPrecio] = useState(productoEditar?.precio.toString() ?? "");
+    const [stock, setStock] = useState(productoEditar?.stock.toString() ?? "");
 
-    try {
-      await crearProducto({
-        nombre,
-        precio: Number(precio),
-        stock: Number(stock),
-      });
+    const guardarProducto = async (e: SyntheticEvent<HTMLFormElement, SubmitEvent>) => {
+        e.preventDefault();
 
-      setNombre("");
-      setPrecio("");
-      setStock("");
-      window.location.reload();
-    } catch (error) {
-      console.error("Error al guardar producto:", error);
-    }
-  };
 
-  return (
+        if (productoEditar) {
+            await actualizarProducto(
+                productoEditar.id,
+                nombre,
+                Number(precio),
+                Number(stock)
+            );
+
+            console.log("Producto actualizado")
+        } else {
+
+            try {
+                const id = await crearProducto(
+                    nombre,
+                    Number(precio),
+                    Number(stock)
+                );
+
+                console.log("Producto creado: ", id)
+                setNombre("");
+                setPrecio("");
+                setStock("");
+            } catch (error) {
+                console.error("Error al guardar producto:", error);
+            }
+
+        }
+    
+};
+
+return (
     <div className="glass-panel">
-      <div className="panel-header">Registrar Nuevo Item</div>
-      <form onSubmit={guardarProducto} className="form-grid-layout">
-        <div className="field-group">
-          <label>Nombre del Producto</label>
-          <input
-            type="text"
-            placeholder="Ej. Laptop Gaming"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
-            required
-          />
-        </div>
+        <div className="panel-header">Registrar Nuevo Item</div>
+        <form onSubmit={guardarProducto} className="form-grid-layout">
+            <div className="field-group">
+                <label>Nombre del Producto</label>
+                <input
+                    type="text"
+                    placeholder="Ej. Laptop Gaming"
+                    value={nombre}
+                    onChange={(e) => setNombre(e.target.value)}
+                    required
+                />
+            </div>
 
-        <div className="field-group">
-          <label>Precio Unitario ($)</label>
-          <input
-            type="number"
-            placeholder="0.00"
-            value={precio}
-            onChange={(e) => setPrecio(e.target.value)}
-            required
-          />
-        </div>
+            <div className="field-group">
+                <label>Precio Unitario ($)</label>
+                <input
+                    type="number"
+                    placeholder="0.00"
+                    value={precio}
+                    onChange={(e) => setPrecio(e.target.value)}
+                    required
+                />
+            </div>
 
-        <div className="field-group">
-          <label>Stock Disponible</label>
-          <input
-            type="number"
-            placeholder="0"
-            value={stock}
-            onChange={(e) => setStock(e.target.value)}
-            required
-          />
-        </div>
+            <div className="field-group">
+                <label>Stock Disponible</label>
+                <input
+                    type="number"
+                    placeholder="0"
+                    value={stock}
+                    onChange={(e) => setStock(e.target.value)}
+                    required
+                />
+            </div>
 
-        <button type="submit" className="btn-primary">
-          + Guardar
-        </button>
-      </form>
+            <button type="submit" className="btn-primary">
+                {productoEditar ? "Actualizar":"Guardar"}
+            </button>
+        </form>
     </div>
-  );
+);
 }
 
 export default ProductoForm;
