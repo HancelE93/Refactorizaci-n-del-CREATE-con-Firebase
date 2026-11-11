@@ -1,4 +1,3 @@
-
 import { useState, type FormEvent } from "react";
 import { crearProducto } from "../services/productoService";
 
@@ -11,53 +10,61 @@ function ProductoForm() {
     e.preventDefault();
 
     try {
-      const id = await crearProducto({
+      await crearProducto({
         nombre,
         precio: Number(precio),
         stock: Number(stock),
       });
 
-      console.log("Producto creado:", id);
-
       setNombre("");
       setPrecio("");
       setStock("");
-
+      window.location.reload();
     } catch (error) {
       console.error("Error al guardar producto:", error);
     }
   };
 
   return (
-    <div>
-      <h1>Registro de productos</h1>
+    <div className="glass-panel">
+      <div className="panel-header">Registrar Nuevo Item</div>
+      <form onSubmit={guardarProducto} className="form-grid-layout">
+        <div className="field-group">
+          <label>Nombre del Producto</label>
+          <input
+            type="text"
+            placeholder="Ej. Laptop Gaming"
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
+            required
+          />
+        </div>
 
-      <form onSubmit={guardarProducto}>
-        <input
-          type="text"
-          placeholder="Nombre"
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
-          required
-        />
+        <div className="field-group">
+          <label>Precio Unitario ($)</label>
+          <input
+            type="number"
+            placeholder="0.00"
+            value={precio}
+            onChange={(e) => setPrecio(e.target.value)}
+            required
+          />
+        </div>
 
-        <input
-          type="number"
-          placeholder="Precio"
-          value={precio}
-          onChange={(e) => setPrecio(e.target.value)}
-          required
-        />
+        <div className="field-group">
+          <label>Stock Disponible</label>
+          <input
+            type="number"
+            placeholder="0"
+            value={stock}
+            onChange={(e) => setStock(e.target.value)}
+            required
+          />
+        </div>
 
-        <input
-          type="number"
-          placeholder="Stock"
-          value={stock}
-          onChange={(e) => setStock(e.target.value)}
-          required
-        />
-
-        <button type="submit">Guardar</button>
+        <button type="submit" className="btn-primary">
+          + Guardar
+        </button>
       </form>
     </div>
   );
