@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import {
   obtenerProductos,
+  eliminarProducto,
   type Producto,
 } from "../services/productoService";
 
@@ -24,6 +25,16 @@ export const ProductoLista = ({ onEditar }: Props) => {
 
     cargarProductos();
   }, []);
+
+  const handleEliminar = async (id:string)=>{
+    try{
+        await eliminarProducto(id);
+        console.log("Producto eliminado");
+
+    }catch(error){
+        console.log("Error: "+error)
+    }
+  }
 
   return (
     <div className="table-container">
@@ -82,6 +93,14 @@ export const ProductoLista = ({ onEditar }: Props) => {
                     onClick={() => onEditar(producto)}
                   >
                     Editar
+                  </button>
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    onClick={() => handleEliminar(producto.id)}
+                  >
+                    Eliminar
                   </button>
                 </td>
               </tr>

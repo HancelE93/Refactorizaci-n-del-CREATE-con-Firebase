@@ -5,6 +5,7 @@ import {
   getDocs,
   doc,
   updateDoc,
+  deleteDoc
 } from "firebase/firestore";
 
 import { db } from "../firebase";
@@ -55,3 +56,9 @@ export const actualizarProducto = async (
     stock,
   });
 };
+
+export const eliminarProducto = async (id : string)=>{
+    const productoRef =doc(db,"productos",id);
+
+    await deleteDoc(productoRef);
+}
