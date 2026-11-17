@@ -7,6 +7,10 @@ import {
   updateDoc,
   deleteDoc,
   onSnapshot,
+  query,
+  where,
+  orderBy,
+  type Unsubscribe
 } from "firebase/firestore";
 
 import { db } from "../firebase";
@@ -94,3 +98,26 @@ export const eliminarProducto = async (id: string) => {
 
   await deleteDoc(productoRef);
 };
+
+export const obtenerProdcutosDispoinibles = async (): Promise<Producto[]> => {
+
+    const consulta = query(
+        collection(db,"productos"),
+        where ("categoria","==","tecnologia"),
+        where ("stock",">",0),
+        where ("precio",">=",100),
+        where ("precio","<=",500),
+        orderBy("precio","asc"),
+    );
+
+    const querySnapshot = await  getDocs(consulta);
+
+    const productos = querySnapshot.docs.map((documento)=>({
+
+        id: documento.id,
+        ...documento.data(),
+    })) as Producto[];
+
+    return productos;
+
+}
