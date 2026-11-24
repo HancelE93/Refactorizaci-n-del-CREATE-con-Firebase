@@ -10,6 +10,10 @@ import {
   query,
   where,
   orderBy,
+  startAfter,
+  limit,
+  type QueryDocumentSnapshot,
+  type DocumentData,
   type Unsubscribe
 } from "firebase/firestore";
 
@@ -101,23 +105,64 @@ export const eliminarProducto = async (id: string) => {
 
 export const obtenerProdcutosDispoinibles = async (): Promise<Producto[]> => {
 
-    const consulta = query(
-        collection(db,"productos"),
-        where ("categoria","==","tecnologia"),
-        where ("stock",">",0),
-        where ("precio",">=",100),
-        where ("precio","<=",500),
-        orderBy("precio","asc"),
-    );
+  const consulta = query(
+    collection(db, "productos"),
+    where("categoria", "==", "tecnologia"),
+    where("stock", ">", 0),
+    where("precio", ">=", 100),
+    where("precio", "<=", 500),
+    limit(2),
+    orderBy("precio", "asc"),
+  );
 
-    const querySnapshot = await  getDocs(consulta);
+  const querySnapshot = await getDocs(consulta);
 
-    const productos = querySnapshot.docs.map((documento)=>({
+  const productos = querySnapshot.docs.map((documento) => ({
 
-        id: documento.id,
-        ...documento.data(),
-    })) as Producto[];
+    id: documento.id,
+    ...documento.data(),
+  })) as Producto[];
 
-    return productos;
+  return productos;
 
 }
+
+export const obtenerProductosPaginados = async (
+  ultimoDocumento?: QueryDocumentSnapshot<DocumentData>
+) => {
+  let consulta;
+
+  if (ultimoDocumento) {
+    consulta = query(
+      collection(db, "productos"),
+      orderBy("precio", "asc"),
+      startAfter(ultimoDocumento),
+      limit(6)
+    );
+  } else {
+    consulta = query(
+      collection(db, "productos"),
+      orderBy("precio", "asc"),
+      limit(6)
+    );
+  }
+
+  const snapshot = await getDocs(consulta);
+
+  const hayMas = snapshot.docs.length > 5;
+  const documentosPagina = snapshot.docs.slice(0, 5);
+
+  const productos = documentosPagina.map((documento) => ({
+    id: documento.id,
+    ...documento.data(),
+  })) as Producto[];
+
+  const nuevoUltimoDoc =
+    documentosPagina[documentosPagina.length - 1];
+
+  return {
+    productos,
+    ultimoDocumento: nuevoUltimoDoc,
+    hayMas,
+  };
+};

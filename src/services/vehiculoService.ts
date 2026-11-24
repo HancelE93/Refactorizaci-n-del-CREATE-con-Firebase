@@ -5,6 +5,10 @@ import {
     query,
     where,
     orderBy,
+    limit,
+    startAfter,
+    type QueryDocumentSnapshot,
+    type DocumentData,
 } from "firebase/firestore";
 
 import { db } from "../firebase";
@@ -96,4 +100,40 @@ export const obtenerSedanRecientes = async (): Promise<Vehiculo[]> => {
         id: documento.id,
         ...documento.data(),
     } as Vehiculo));
+};
+
+// CONSULTA 5: Paginación de vehículos (10 por página)
+export const obtenerVehiculosPaginados = async (
+    ultimoDocumento?: QueryDocumentSnapshot<DocumentData>
+) => {
+    let q;
+
+    if (ultimoDocumento) {
+        q = query(
+            vehiculosRef,
+            orderBy("marca", "asc"),
+            startAfter(ultimoDocumento),
+            limit(10)
+        );
+    } else {
+        q = query(
+            vehiculosRef,
+            orderBy("marca", "asc"),
+            limit(10)
+        );
+    }
+
+    const resultado = await getDocs(q);
+
+    const vehiculos: Vehiculo[] = resultado.docs.map((documento) => ({
+        id: documento.id,
+        ...documento.data(),
+    } as Vehiculo));
+
+    const ultimoDoc = resultado.docs[resultado.docs.length - 1];
+
+    return {
+        vehiculos,
+        ultimoDocumento: ultimoDoc,
+    };
 };

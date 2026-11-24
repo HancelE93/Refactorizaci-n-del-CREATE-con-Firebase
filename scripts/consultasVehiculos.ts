@@ -76,11 +76,12 @@ const consulta3 = async () => {
 
     const q = query(
         vehiculosRef,
-        where("precio", ">=", 20000),
-        where("precio", "<=", 40000),
+        where("categoria", "==", "Deportivo"),
+       // where("precio", ">=", 20000),
+       // where("precio", "<=", 40000),
         where("stock", ">", 0),
         orderBy("precio", "asc"),
-        orderBy("stock", "asc")
+        //orderBy("stock", "asc")
     );
 
     const resultado = await getDocs(q);
@@ -116,13 +117,56 @@ const consulta4 = async () => {
     });
 };
 
+
+const consulta5 = async () => {
+    console.log("\nCONSULTA 5: Prueba");
+
+    const q = query(
+        vehiculosRef,
+        where("precio", ">=", 30000),
+        where("precio", "<=", 45000),
+        where("stock", ">", 0),
+       
+    );
+
+    const resultado = await getDocs(q);
+
+    resultado.forEach((documento) => {
+        console.log({
+            id: documento.id,
+            ...documento.data(),
+        });
+    });
+};
+
+const consulta6 = async () => {
+    console.log("\nCONSULTA 6: Prueba");
+
+    const q = query(
+        vehiculosRef,
+        where("tipo", "==", "Sedan"),
+        where("anio", ">=", 2024),
+        where("stock", ">", 0),
+       
+    );
+
+    const resultado = await getDocs(q);
+
+    resultado.forEach((documento) => {
+        console.log({
+            id: documento.id,
+            ...documento.data(),
+        });
+    });
+};
 // EJECUTAR TODAS LAS CONSULTAS
 const ejecutarConsultas = async () => {
     try {
-        await consulta1();
-        await consulta2();
-        await consulta3();
-        await consulta4();
+        //await consulta1();
+       // await consulta2();
+        //await consulta3();
+       // await consulta4();
+        await consulta6();
     } catch (error) {
         console.error("Error al ejecutar las consultas:", error);
     }

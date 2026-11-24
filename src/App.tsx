@@ -1,4 +1,4 @@
-
+/*
 import { useEffect, useState } from "react";
 
 import {
@@ -327,4 +327,176 @@ function App() {
 }
 
 export default App;
+*/
 
+
+/*
+import { useState } from "react";
+import ProductoForm from "./components/ProductoForm";
+import { ProductoLista } from "./components/ProductoLista";
+import type { Producto } from "./services/productoService";
+import "./App.css";
+
+function App() {
+    const [productoEditar, setProductoEditar] = useState<Producto | null>(null);
+
+    return (
+        <div className="dashboard-wrapper">
+            <header className="header-bar">
+                <div className="brand-container">
+                    <div className="brand-icon">P</div>
+                    <div>
+                        <h1>PRODUCT HUB</h1>
+                        <p>INVENTARIO INTELIGENTE</p>
+                    </div>
+                </div>
+
+                <div className="status-badge">
+                    <span className="dot-pulse"></span>
+                    Firestore
+                </div>
+            </header>
+
+            <section className="products-welcome">
+                <div>
+                    <span className="eyebrow">PANEL DE ADMINISTRACIÓN</span>
+                    <h2>Gestión de productos</h2>
+                    <p>Administra y controla tu inventario desde un solo lugar.</p>
+                </div>
+
+                <div className="products-welcome-icon">
+                    <span>▦</span>
+                </div>
+            </section>
+
+            <section className="products-info-grid">
+                <article className="products-info-card">
+                    <div className="products-info-icon blue-icon">
+                        <span>▣</span>
+                    </div>
+                    <div>
+                        <span>Inventario</span>
+                        <strong>Productos</strong>
+                        <small>Registro y administración</small>
+                    </div>
+                </article>
+
+                <article className="products-info-card">
+                    <div className="products-info-icon green-icon">
+                        <span>✓</span>
+                    </div>
+                    <div>
+                        <span>Control</span>
+                        <strong>Existencias</strong>
+                        <small>Seguimiento de stock</small>
+                    </div>
+                </article>
+
+                <article className="products-info-card">
+                    <div className="products-info-icon purple-icon">
+                        <span>◇</span>
+                    </div>
+                    <div>
+                        <span>Organización</span>
+                        <strong>Categorías</strong>
+                        <small>Clasificación de productos</small>
+                    </div>
+                </article>
+
+                <article className="products-info-card">
+                    <div className="products-info-icon amber-icon">
+                        <span>$</span>
+                    </div>
+                    <div>
+                        <span>Valor</span>
+                        <strong>Precios</strong>
+                        <small>Control de precios unitarios</small>
+                    </div>
+                </article>
+            </section>
+
+            <section className="products-content">
+                <div className="products-section-title">
+                    <div>
+                        <span className="eyebrow">GESTIÓN DE INVENTARIO</span>
+                        <h2>
+                            {productoEditar ? "Editar producto" : "Registrar producto"}
+                        </h2>
+                        <p>
+                            {productoEditar
+                                ? "Modifica la información del producto seleccionado."
+                                : "Completa los campos para agregar un nuevo producto."}
+                        </p>
+                    </div>
+
+                    {productoEditar && (
+                        <button
+                            className="cancel-edit-button"
+                            type="button"
+                            onClick={() => setProductoEditar(null)}
+                        >
+                            Cancelar edición
+                        </button>
+                    )}
+                </div>
+
+                <ProductoForm
+                    key={productoEditar?.id ?? "nuevo"}
+                    productoEditar={productoEditar}
+                />
+
+                <div className="products-list-heading">
+                    <div>
+                        <span className="eyebrow">BASE DE DATOS</span>
+                        <h2>Inventario registrado</h2>
+                        <p>Productos almacenados en Firestore.</p>
+                    </div>
+                    <div className="live-label">
+                        <span className="dot-pulse"></span>
+                        Actualización en tiempo real
+                    </div>
+                </div>
+
+                <ProductoLista onEditar={setProductoEditar} />
+            </section>
+
+            <footer className="dashboard-footer">
+                <span>PRODUCT HUB · Sistema de inventario</span>
+                <span>Desarrollado con React + Firebase</span>
+            </footer>
+        </div>
+    );
+}
+
+export default App;
+*/
+/*
+import { ProductosListaPaginada } from "./components/ProductosListaPaginada";
+
+function App() {
+    return (
+        <>
+            <h1>Productos paginados</h1>
+            <ProductosListaPaginada />
+        </>
+    );
+}
+
+export default App;
+*/
+
+import "./App.css";
+import { VehiculoListaPaginada } from "./components/VehiculoListaPaginada";
+
+function App() {
+    return (
+        <>
+            <h1>Taller Práctico N.º 8</h1>
+            <h2>Paginación eficiente de datos</h2>
+
+            <VehiculoListaPaginada />
+        </>
+    );
+}
+
+export default App;

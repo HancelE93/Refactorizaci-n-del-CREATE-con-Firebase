@@ -607,3 +607,690 @@ input {
         flex-direction: column;
     }
 }
+
+
+
+
+/* =========================================
+   PRODUCT HUB - DISEÑO PROFESIONAL
+========================================= */
+
+.products-welcome {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0 28px;
+    padding: 30px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: linear-gradient(120deg, #172b49, #142238);
+}
+
+.products-welcome h2 {
+    margin: 10px 0;
+    font-size: clamp(25px, 4vw, 34px);
+    letter-spacing: -1px;
+}
+
+.products-welcome p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.products-welcome-icon {
+    display: grid;
+    place-items: center;
+    width: 75px;
+    height: 75px;
+    border: 1px solid #3b82f655;
+    border-radius: 20px;
+    background: #3b82f622;
+    color: #60a5fa;
+    font-size: 42px;
+}
+
+.products-info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.products-info-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: linear-gradient(145deg, #1b2940, #121c2e);
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.products-info-card:hover {
+    transform: translateY(-3px);
+    border-color: #3b82f688;
+}
+
+.products-info-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 43px;
+    height: 43px;
+    border-radius: 12px;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.products-info-card span,
+.products-info-card strong,
+.products-info-card small {
+    display: block;
+}
+
+.products-info-card span {
+    color: var(--text-muted);
+    font-size: 10px;
+}
+
+.products-info-card strong {
+    margin: 5px 0;
+    color: var(--text-main);
+    font-size: 15px;
+}
+
+.products-info-card small {
+    color: #64748b;
+    font-size: 10px;
+}
+
+.products-content {
+    margin-top: 20px;
+}
+
+.products-section-title,
+.products-list-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.products-section-title h2,
+.products-list-heading h2 {
+    margin: 8px 0;
+    font-size: 21px;
+}
+
+.products-section-title p,
+.products-list-heading p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+.products-content .glass-panel {
+    margin-bottom: 42px;
+    padding: 25px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: linear-gradient(145deg, #1b2940, #121c2e);
+    box-shadow: var(--shadow-card);
+}
+
+.products-content .panel-header {
+    margin-bottom: 22px;
+    color: #dbeafe;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.products-content .form-grid-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.products-content .field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.products-content .field-group label {
+    color: #cbd5e1;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.products-content .field-group input {
+    width: 100%;
+    padding: 13px 14px;
+    outline: none;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #0b1528;
+    color: white;
+    font-size: 13px;
+    transition: border-color 0.2s;
+}
+
+.products-content .field-group input:focus {
+    border-color: var(--primary);
+}
+
+.products-content .field-group input::placeholder {
+    color: #64748b;
+}
+
+.products-content .btn-primary {
+    grid-column: 1 / -1;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.products-content .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px #2563eb55;
+}
+
+.cancel-edit-button {
+    padding: 11px 15px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: #334155;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.cancel-edit-button:hover {
+    background: #475569;
+}
+
+.live-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #34d399;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.products-content .table-container {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    background: var(--surface);
+}
+
+.products-content .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.products-content .custom-table th {
+    padding: 16px;
+    background: #1c2940;
+    color: #93c5fd;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.products-content .custom-table td {
+    padding: 15px 16px;
+    border-top: 1px solid var(--border);
+    color: #cbd5e1;
+    font-size: 12px;
+}
+
+.products-content .custom-table tbody tr:hover {
+    background: #1c2940;
+}
+
+.doc-id-pill {
+    display: inline-block;
+    max-width: 130px;
+    overflow: hidden;
+    padding: 5px 8px;
+    border-radius: 6px;
+    background: #3b82f622;
+    color: #93c5fd;
+    font-size: 10px;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+
+.product-name-cell {
+    color: #f8fafc !important;
+    font-weight: 700;
+}
+
+.price-cell {
+    color: #34d399 !important;
+    font-weight: 800;
+}
+
+.stock-tag {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.stock-tag.in-stock {
+    background: #10b98122;
+    color: #34d399;
+}
+
+.stock-tag.low-stock {
+    background: #f59e0b22;
+    color: #fbbf24;
+}
+
+.products-content .custom-table td button {
+    margin-right: 7px;
+    padding: 8px 11px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: #1c2940;
+    color: #93c5fd;
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.products-content .custom-table td button:hover {
+    border-color: var(--primary);
+    background: #1d3b68;
+    color: white;
+}
+
+.products-content .custom-table td button:last-child {
+    color: #fca5a5;
+}
+
+.products-content .custom-table td button:last-child:hover {
+    border-color: #ef4444;
+    background: #7f1d1d;
+}
+
+/* RESPONSIVE PRODUCT HUB */
+
+@media (max-width: 950px) {
+    .products-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .products-welcome {
+        padding: 22px;
+    }
+
+    .products-welcome-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 28px;
+    }
+
+    .products-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .products-section-title,
+    .products-list-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .products-content .glass-panel {
+        padding: 17px;
+    }
+
+    .products-content .form-grid-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .products-content .btn-primary {
+        grid-column: auto;
+    }
+
+    .live-label {
+        font-size: 10px;
+    }
+}
+
+
+
+/* =========================================
+   botones
+========================================= */    
+
+ .pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.pagination-controls button {
+    padding: 9px 18px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface-light);
+    color: var(--text-main);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+    background: var(--primary);
+}
+
+.pagination-controls button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* =========================================
+   Vehículos listados
+========================================= */    
+
+.vehiculos-dashboard {
+    min-height: 100vh;
+    padding: 35px;
+    background: #0b1120;
+    color: #f8fafc;
+    font-family: "Inter", sans-serif;
+}
+
+.vehiculos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.vehiculos-eyebrow {
+    color: #60a5fa;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.vehiculos-header h1 {
+    margin: 10px 0;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.vehiculos-header p,
+.vehiculos-panel-header p {
+    color: #94a3b8;
+    font-size: 13px;
+}
+
+.vehiculos-status {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 11px 16px;
+    border: 1px solid #293750;
+    border-radius: 10px;
+    background: #151f32;
+    color: #cbd5e1;
+    font-size: 12px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+}
+
+.vehiculos-resumen {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.resumen-card {
+    padding: 22px;
+    border: 1px solid #293750;
+    border-radius: 14px;
+    background: #151f32;
+}
+
+.resumen-card span,
+.resumen-card small {
+    display: block;
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+.resumen-card strong {
+    display: block;
+    margin: 12px 0 6px;
+    color: #60a5fa;
+    font-size: 30px;
+}
+
+.vehiculos-panel {
+    overflow: hidden;
+    border: 1px solid #293750;
+    border-radius: 16px;
+    background: #151f32;
+}
+
+.vehiculos-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 23px;
+}
+
+.vehiculos-panel-header h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.vehiculos-panel-header p {
+    margin-bottom: 0;
+}
+
+.btn-cargar {
+    padding: 11px 17px;
+    border: none;
+    border-radius: 9px;
+    background: #2563eb;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-cargar:hover {
+    background: #3b82f6;
+}
+
+.btn-cargar:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.vehiculos-loading {
+    padding: 12px 23px;
+    color: #60a5fa;
+    font-size: 13px;
+}
+
+.vehiculos-table-container {
+    overflow-x: auto;
+}
+
+.vehiculos-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.vehiculos-table thead {
+    background: #1c2940;
+}
+
+.vehiculos-table th {
+    padding: 16px;
+    color: #93c5fd;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.vehiculos-table td {
+    padding: 17px 16px;
+    border-top: 1px solid #293750;
+    color: #cbd5e1;
+    font-size: 12px;
+}
+
+.vehiculos-table tbody tr:hover {
+    background: #1c2940;
+}
+
+.vehiculo-modelo {
+    color: #f8fafc !important;
+    font-weight: 700;
+}
+
+.vehiculo-precio {
+    color: #60a5fa !important;
+    font-weight: 800;
+}
+
+.vehiculo-stock,
+.vehiculo-tipo {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.stock-disponible {
+    background: #064e3b;
+    color: #6ee7b7;
+}
+
+.stock-agotado {
+    background: #7f1d1d;
+    color: #fecaca;
+}
+
+.vehiculo-tipo {
+    background: #1e3a8a;
+    color: #bfdbfe;
+}
+
+.vehiculos-empty {
+    padding: 35px !important;
+    text-align: center;
+    color: #94a3b8 !important;
+}
+
+.vehiculos-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 20px 23px;
+    border-top: 1px solid #293750;
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+.vehiculos-pagination strong {
+    color: #60a5fa;
+}
+
+.pagination-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.pagination-buttons button {
+    padding: 10px 16px;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    background: #1c2940;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.pagination-buttons button:hover:not(:disabled) {
+    background: #2563eb;
+}
+
+.pagination-buttons button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+@media (max-width: 750px) {
+    .vehiculos-dashboard {
+        padding: 18px;
+    }
+
+    .vehiculos-header,
+    .vehiculos-panel-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .vehiculos-resumen {
+        grid-template-columns: 1fr;
+    }
+
+    .vehiculos-pagination {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 450px) {
+    .vehiculos-header h1 {
+        font-size: 24px;
+    }
+
+    .pagination-buttons {
+        width: 100%;
+    }
+
+    .pagination-buttons button {
+        flex: 1;
+    }
+}
