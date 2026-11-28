@@ -1294,3 +1294,76 @@ input {
         flex: 1;
     }
 }
+
+
+
+/* =========================================
+   MAtriculas
+========================================= */    
+
+/* Corrección de visibilidad de resultados */
+
+.container {
+  color: #1e293b;
+}
+
+.container h1,
+.container h3,
+.container p {
+  color: #1e293b;
+}
+
+.tabla-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  color: #1e293b;
+}
+
+thead {
+  background-color: #e2e8f0;
+}
+
+th,
+td {
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  text-align: left;
+  color: #1e293b;
+}
+
+th {
+  font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+tbody tr:hover {
+  background-color: #eff6ff;
+}
+
+button {
+  color: #ffffff;
+}
+
+input {
+  color: #1e293b;
+  background-color: #ffffff;
+}
+
+input::placeholder {
+  color: #64748b;
+}
+
+.mensaje,
+.error {
+  color: #1e293b;
+}

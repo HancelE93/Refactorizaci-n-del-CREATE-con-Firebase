@@ -484,7 +484,7 @@ function App() {
 
 export default App;
 */
-
+/*
 import "./App.css";
 import { VehiculoListaPaginada } from "./components/VehiculoListaPaginada";
 
@@ -497,6 +497,19 @@ function App() {
             <VehiculoListaPaginada />
         </>
     );
+}
+
+export default App;
+*/
+
+
+
+
+import InventarioAutos from "./components/InventarioAutos";
+import "./App.css";
+
+function App() {
+  return <InventarioAutos />;
 }
 
 export default App;
